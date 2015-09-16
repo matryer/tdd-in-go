@@ -1,2 +1,4 @@
-# tdd-in-go
-TDD in Go presentation
+tdd-present
+===========
+
+Presentation on Test-driven development at Gophercon 2014, Denver CO.
