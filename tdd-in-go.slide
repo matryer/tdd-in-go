@@ -32,19 +32,38 @@ https://github.com/matryer/tdd-in-go
 
 - Make your tests give you a TODO list
 
-* Go sugar
+* Integration testing (table driven)
 
-.play -edit test2.go /START OMIT/,/END OMIT/
+.code table_test.go /START OMIT/,/END OMIT/
+
+- Real Go code
+- Nothing new to learn
+
+* Table driven tests (runner)
+
+.play table_test2.go /START OMIT/,/END OMIT/
+
+- Making real HTTP requests
+- Tests the full stack (including middleware)
 
 * Go tools
 
 - go test - runs tests and gives you output
 - go test ./... - run tests for multi-package projects
-- go test -cover - http://blog.golang.org/cover
+- go test -cover
 
 .code coverage.sh
 
 With TDD practices, the coverage number is automatically very high.
+
+* Visualising coverage
+
+    go test -covermode=count -coverprofile=count.out
+    go tool cover -html=cover.out
+
+.image count.png
+
+see [[http://blog.golang.org/cover]]
 
 * Helper libraries?
 
@@ -65,7 +84,7 @@ With TDD practices, the coverage number is automatically very high.
 
 .code testify.go
 
-- go get github.com/stretchr/testify
+- see [[https://github.com/stretchr/testify]]
 
 * Mocking
 
@@ -77,11 +96,34 @@ In Testify:
 
 .code mock.go /START OMIT/,/END OMIT/
 
-- Interfaces in test code
+* Interfaces in your code
 
-* What we do
+In another package:
 
-- On save: build and run all package tests - see blog.stretchr.com
+    type Sender struct{}
+    func (s *Sender) Send(to, subject, body string) error {
+      // ...
+    }
+
+You can't change that package, but you can make your own interface:
+
+   type MailSender interface {
+     Send(to, subject, body string) error
+   }
+
+And then use that, as well as your own test MailSender:
+
+    func NewService(mailSender MailSender) { ... }
+
+    // theirs works
+    s := NewService(&their.Sender{})
+
+    // but now, so does yours
+    s := NewService(&mySender{})
+
+* Building and testing is usually very quick
+
+- On save: build and run all package tests
 
 .image failedtest.png
 
@@ -95,4 +137,11 @@ In Testify:
 - Different test package (test as a real user)
 - Interfaces in test code
 
-* Workshop
+* Thank you - Get in touch
+
+- Mat Ryer
+- @matryer
+- github.com/matryer
+- medium.com/@matryer
+
+.image gopher-mat.png
