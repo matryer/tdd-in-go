@@ -6,6 +6,13 @@ Mat Ryer
 https://github.com/matryer/tdd-in-go
 @matryer
 
+* What is test driven development?
+
+- Write tests *before* implementation code
+- Automated
+- Run as quickly as possible
+- Unit tests, integration tests, any kind of tests
+
 * Why test-driven development?
 
 - Evidence based programming
@@ -26,11 +33,9 @@ https://github.com/matryer/tdd-in-go
 - Run all your tests to make sure you haven't broken anything
 - Commit?
 
-* Basic test
+* Test code gives you a TODO list
 
 .play -edit test1.go /START OMIT/,/END OMIT/
-
-- Make your tests give you a TODO list
 
 * Integration testing (table driven)
 
@@ -120,6 +125,30 @@ And then use that, as well as your own test MailSender:
 
     // but now, so does yours
     s := NewService(&mySender{})
+
+* Dedicated package for tests
+
+- Normally many packages in one directory is an error
+- It's OK for *_test.go files
+
+    package manners
+    func Greet(name string) string {
+      return prependGreeting("Hello", name, false)
+    }
+    func prependGreeting(g, s string, titlecase bool) string {
+      return g + " " + s
+    }
+
+Test it from an external point of view:
+
+    package manners_test
+    import (
+      "testing"
+      "manners"
+    )
+    func TestGreet(t *testing.T) {
+      assert.Equal(manners.Greet("John"), "Hello John")
+    }
 
 * Building and testing is usually very quick
 
