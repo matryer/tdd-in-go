@@ -150,6 +150,13 @@ Test it from an external point of view:
       assert.Equal(manners.Greet("John"), "Hello John")
     }
 
+* Isolated code
+
+- When one thing breaks, one test should fail
+- Not always possible
+
+.play isolated_example.go /START OMIT/,/END OMIT/
+
 * Building and testing is usually very quick
 
 - On save: build and run all package tests
