@@ -20,13 +20,13 @@ var tests = []struct {
 }{{
 	Method:       "GET",
 	Path:         "/things",
-	BodyContains: "Hello Golang UK Conference",
+	BodyContains: "Hello Gophers",
 	Status:       http.StatusOK,
 }, {
 	Method:       "POST",
 	Path:         "/things",
-	Body:         strings.NewReader(`{"name":"Golang UK Conference"}`),
-	BodyContains: "Hello Golang UK Conference",
+	Body:         strings.NewReader(`{"name":"Gophers"}`),
+	BodyContains: "Hello Gophers",
 	Status:       http.StatusCreated,
 }}
 

@@ -6,11 +6,17 @@ Mat Ryer
 https://github.com/matryer/tdd-in-go
 @matryer
 
+* Purpose of this talk
+
+Try TDD if you haven't, apply it more if you have.
+
+.image passing.png
+
 * What is test driven development?
 
 - Write tests *before* implementation code
 - Automated
-- Run as quickly as possible
+- Run quickly and often
 - Unit tests, integration tests, any kind of tests
 
 * Why test-driven development?
@@ -177,7 +183,7 @@ Test it from an external point of view:
 
 - Mat Ryer
 - @matryer
-- github.com/matryer
-- medium.com/@matryer
+- [[https://github.com/matryer]]
+- [[https://medium.com/@matryer]]
 
 .image gopher-mat.png
