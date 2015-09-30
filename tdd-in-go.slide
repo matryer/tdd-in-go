@@ -70,7 +70,7 @@ With TDD practices, the coverage number is automatically very high.
 * Visualising coverage
 
     go test -covermode=count -coverprofile=count.out
-    go tool cover -html=cover.out
+    go tool cover -html=count.out
 
 .image count.png
 
@@ -168,6 +168,24 @@ Test it from an external point of view:
 - On save: build and run all package tests
 
 .image failedtest.png
+
+* Art vs science of testing
+
+- Life-time of code
+
+Normal error code:
+
+    if err := json.NewEncoder(w).Encode(thing); err != nil {
+      return nil, err
+    }
+
+Unless the errors are part of your API:
+
+    if err := json.NewEncoder(w).Encode(thing); err != nil {
+      return nil, ErrEncoding(err, "tokens")
+    }
+
+- Sometimes you have to add complexity in order to test something - proceed with caution 
 
 * Ideas
 
