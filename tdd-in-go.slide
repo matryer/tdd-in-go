@@ -43,14 +43,14 @@ Try TDD if you haven't, apply it more if you have.
 
 .play -edit test1.go /START OMIT/,/END OMIT/
 
-* Integration testing (table driven)
+* Testing HTTP endpoints
 
 .code table_test.go /START OMIT/,/END OMIT/
 
-- Real Go code
+- Table tests using real Go code
 - Nothing new to learn
 
-* Table driven tests (runner)
+* Using httptest package
 
 .play table_test2.go /START OMIT/,/END OMIT/
 
@@ -194,8 +194,9 @@ Unless the errors are part of your API:
 - Describe new functionality in test code
 - Give a failing test to your pair partner
 - Tests as simple as possible
-- Different test package (test as a real user)
+- Different test package
 - Interfaces in test code
+- Build in ability to test live platforms too - and do it automatically
 
 * Thank you - Get in touch
 
